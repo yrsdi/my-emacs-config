@@ -1,0 +1,40 @@
+(require 'package)
+
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+
+(package-initialize)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+
+;; Don't show the splash screen
+(setq inhibit-startup-message t ; Don't sow the splash screen
+      visible-bell t)           ; Flash when the bell rings
+;; This could also be:
+;;(setq inhibit-startup-message t) ; Don't show the splash screen
+;;(setq visible-bell t)            ; Flash when the bell rings
+
+;; Turn off some unneeded UI elements
+(menu-bar-mode -1)  ; Leave this one on if you're a beginner!
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Hightlight current line
+(global-hl-line-mode t)
+
+;; Display line numbers in every buffer
+(global-display-line-numbers-mode 1)
+
+;; load themes
+(add-to-list 'load-path "~/.emacs.d/modus-themes")
+(require 'modus-themes)
+(load-theme 'modus-operandi t t)
+(load-theme 'modus-vivendi t t)
+
+(enable-theme 'modus-vivendi) ;; OR
+;;(enable-theme 'modus-operandi)
+
+;; If you're using Emacs 27, either install Modus themes or use this one!
+;;(load-theme 'moduls-operandi)
